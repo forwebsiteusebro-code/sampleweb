@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotoPrecision - Motorcycle Repair & Service Workshop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #f97316;
+            --primary-dark: #341100;
+            --secondary: #006d2f;
+            --background: #f9f9ff;
+            --background-light: #f0f3ff;
+            --background-dark: #2a313d;
+            --text-dark: #151c27;
+            --text-muted: #5a5f66;
+            --border-light: #dce2f3;
+            --success: #66ff8e;
+            --white: #ffffff;
+            --error: #ba1a1a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--background);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: white;
+            padding: 16px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .logo-text {
+            font-family: 'Manrope', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .logo-subtext {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-whatsapp, .btn-call {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-family: 'Hanken Grotesk', sans-serif;
+        }
+
+        .btn-whatsapp {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-call {
+            background: white;
+            color: var(--text-dark);
+            border: 1px solid #e0e0e0;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: white;
+            padding: 80px 40px;
+            margin-top: 0;
+        }
+
+        .hero-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-copy h1 {
+            font-size: 56px;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            letter-spacing: -1.68px;
+        }
+
+        .hero-copy h1 .highlight {
+            color: var(--primary);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 219, 202, 0.6);
+            padding: 8px 12px;
+            border-radius: 9999px;
+            margin-bottom: 24px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            border: none;
+            font-family: 'Hanken Grotesk', sans-serif;
+            text-transform: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ea6e0c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #005a26;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 109, 47, 0.3);
+        }
+
+        .hero-trust {
+            display: flex;
+            gap: 32px;
+        }
+
+        .trust-item {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .trust-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .trust-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .hero-image {
+            background: #e7eefe;
+            border-radius: 16px;
+            height: 500px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .diagnostic-badge {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(6px);
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .diagnostic-icon {
+            width: 48px;
+            height: 48px;
+            background: #ffdbca;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .diagnostic-text h4 {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .diagnostic-text p {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-family: 'Manrope', sans-serif;
+        }
+
+        /* ===== ACHIEVEMENT SECTION ===== */
+        .achievement {
+            background: var(--background-light);
+            padding: 96px 40px;
+        }
+
+        .achievement-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 672px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 219, 202, 0.5);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .stat-number {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--text-dark);
+            font-family: 'Manrope', sans-serif;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .stat-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services {
+            background: white;
+            padding: 96px 40px;
+        }
+
+        .services-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: #f9f9ff;
+            padding: 24px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: #e2e8f8;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .service-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-family: 'Manrope', sans-serif;
+            margin-bottom: 8px;
+        }
+
+        .service-price {
+            font-size: 12px;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 8px;
+        }
+
+        .service-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        .service-link {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 14px;
+            padding-top: 16px;
+            border-top: 1px solid transparent;
+            transition: color 0.3s;
+        }
+
+        .service-link:hover {
+            color: #ea6e0c;
+        }
+
+        /* ===== ENQUIRY FORM SECTION ===== */
+        .enquiry {
+            background: var(--background-light);
+            padding: 96px 40px;
+        }
+
+        .enquiry-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .enquiry-left h2 {
+            font-size: 40px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .enquiry-left p {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .benefits-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .benefit-icon {
+            width: 32px;
+            height: 32px;
+            background: #ffdbca;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .benefit-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .benefit-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .enquiry-form {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .form-field {
+            flex: 1;
+        }
+
+        .form-field.full {
+            flex: 1 0 100%;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+            letter-spacing: 0.28px;
+        }
+
+        .form-label .required {
+            color: var(--error);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 14px 16px;
+            border: none;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            font-family: 'Hanken Grotesk', sans-serif;
+            font-size: 16px;
+            color: var(--text-dark);
+            transition: box-shadow 0.3s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 136px;
+            padding: 16px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            font-family: 'Hanken Grotesk', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-submit:hover {
+            background: #ea6e0c;
+            transform: translateY(-2px);
+        }
+
+        .form-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-disclaimer {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        .form-message {
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(102, 255, 142, 0.1);
+            color: var(--success);
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(186, 26, 26, 0.1);
+            color: var(--error);
+            display: block;
+        }
+
+        /* ===== BOOKING SECTION ===== */
+        .booking {
+            background: var(--background-dark);
+            color: white;
+            padding: 96px 40px;
+        }
+
+        .booking-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .booking-left h2 {
+            font-size: 40px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            color: #ebf1ff;
+        }
+
+        .booking-left p {
+            font-size: 18px;
+            color: #dce2f3;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .booking-badge {
+            display: inline-block;
+            background: rgba(226, 232, 248, 0.1);
+            color: #66ff8e;
+            padding: 4px 8px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 24px;
+        }
+
+        .booking-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-light {
+            background: rgba(226, 232, 248, 0.2);
+            color: #ebf1ff;
+            padding: 14px 24px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            font-family: 'Hanken Grotesk', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-light:hover {
+            background: rgba(226, 232, 248, 0.3);
+        }
+
+        .steps-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .step {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .step-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .step-1 .step-icon {
+            background: var(--primary);
+        }
+
+        .step-2 .step-icon {
+            background: rgba(226, 232, 248, 0.2);
+        }
+
+        .step-3 .step-icon {
+            background: var(--secondary);
+        }
+
+        .step-number {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #ffdbca;
+            margin-bottom: 4px;
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ebf1ff;
+            font-family: 'Manrope', sans-serif;
+            margin-bottom: 4px;
+        }
+
+        .step-description {
+            font-size: 14px;
+            color: #dce2f3;
+            line-height: 1.6;
+        }
+
+        /* ===== REVIEWS SECTION ===== */
+        .reviews {
+            background: white;
+            padding: 96px 40px;
+        }
+
+        .reviews-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .review-card {
+            background: #f9f9ff;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+        }
+
+        .stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .star {
+            width: 16px;
+            height: 16px;
+            color: #fbbf24;
+        }
+
+        .review-text {
+            font-size: 16px;
+            color: var(--text-dark);
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .review-author {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-family: 'Manrope', sans-serif;
+            margin-bottom: 4px;
+        }
+
+        .review-bike {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 8px;
+        }
+
+        .review-date {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq {
+            background: var(--background-light);
+            padding: 96px 40px;
+        }
+
+        .faq-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-items {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 16px 24px;
+            background: white;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-family: 'Manrope', sans-serif;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #f5f5f5;
+        }
+
+        .faq-question.active {
+            background: #f0f3ff;
+        }
+
+        .faq-toggle {
+            font-size: 16px;
+            transition: transform 0.3s;
+        }
+
+        .faq-question.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .faq-answer.open {
+            padding: 16px 24px;
+            max-height: 500px;
+        }
+
+        .faq-answer-text {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .faq-cta {
+            background: #e7eefe;
+            padding: 24px;
+            border-radius: 16px;
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-cta-text h3 {
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .faq-cta-text p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .faq-cta-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--background-dark);
+            color: white;
+            padding: 96px 40px 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            padding-bottom: 40px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(226, 232, 248, 0.1);
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            color: white;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            color: #dce2f3;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: #dce2f3;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 40px;
+            font-size: 14px;
+            color: #dce2f3;
+        }
+
+        /* ===== FLOATING WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-copy h1 {
+                font-size: 36px;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .stats-grid,
+            .services-grid,
+            .reviews-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .enquiry-content {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-content {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group {
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+
+            .faq-cta {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 12px 20px;
+            }
+
+            .header-actions {
+                display: none;
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero-copy h1 {
+                font-size: 28px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-trust {
+                flex-direction: column;
+            }
+
+            .achievement,
+            .services,
+            .enquiry,
+            .booking,
+            .reviews,
+            .faq {
+                padding: 60px 20px;
+            }
+
+            .section-header h2,
+            .enquiry-left h2,
+            .booking-left h2 {
+                font-size: 28px;
+            }
+
+            .stats-grid,
+            .services-grid,
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <div class="header-content">
+        <div class="logo">
+            <div>
+                <div class="logo-text">MotoPrecision</div>
+                <div class="logo-subtext">Expert Bike Care</div>
+            </div>
+        </div>
+        <nav>
+            <a href="#hero">Home</a>
+            <a href="#services">Services</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#faq">FAQ</a>
+            <a href="#booking">Booking</a>
+        </nav>
+        <div class="header-actions">
+            <button class="btn-whatsapp" onclick="window.open('https://wa.me/1234567890')">WhatsApp Us</button>
+            <button class="btn-call" onclick="window.open('tel:+1234567890')">Call +1 (555) 839-4420</button>
+        </div>
+        <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
+    </div>
+</header>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero" id="hero">
+    <div class="hero-content">
+        <div class="hero-copy">
+            <span class="hero-badge">YOUR TRUSTED BIKE SERVICE PARTNER</span>
+            <h1>Keep Your Bike Running Smoothly. <span class="highlight">Every Ride, Every Day.</span></h1>
+            <p class="hero-description">
+                From routine servicing and oil changes to brake repairs and engine work, MotoPrecision takes care of your bike with careful workmanship and honest advice. Get the maintenance your bike needs and enjoy greater confidence on every ride.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('enquiry')">Book Your Service</button>
+                <button class="btn btn-secondary" onclick="window.open('https://wa.me/1234567890')">Chat on WhatsApp</button>
+            </div>
+            <div class="hero-trust">
+                <div class="trust-item">
+                    <span class="trust-icon">✓</span>
+                    <span class="trust-text">Routine Maintenance</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon">✓</span>
+                    <span class="trust-text">Reliable Repairs</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon">✓</span>
+                    <span class="trust-text">Friendly Service</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 14px;">
+                [Professional Mechanic Image]
+            </div>
+            <div class="diagnostic-badge">
+                <div class="diagnostic-icon">🔧</div>
+                <div class="diagnostic-text">
+                    <h4>FULL DIAGNOSTIC STATION</h4>
+                    <p>Precision Calibrated</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ACHIEVEMENT SECTION ===== -->
+<section class="achievement">
+    <div class="achievement-content">
+        <div class="section-header">
+            <h2>Built on Experience. Driven by Customer Trust.</h2>
+            <p>Transparent technical precision and honest service standards that motorcycle riders count on every mile.</p>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📅</div>
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Years of Experience</div>
+                <div class="stat-description">Hands-on experience in bike servicing and specialized multi-brand maintenance.</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏁</div>
+                <div class="stat-number">12,500+</div>
+                <div class="stat-label">Services Completed</div>
+                <div class="stat-description">Bikes serviced and repaired with surgical attention to detail and factory torque specs.</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-number">8,400+</div>
+                <div class="stat-label">Customers Served</div>
+                <div class="stat-description">Riders who have trusted us with their performance sports bikes and daily commuters.</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🛠️</div>
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Services Available</div>
+                <div class="stat-description">Practical solutions for routine upkeep, advanced electrical, and heavy mechanical repairs.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SERVICES SECTION ===== -->
+<section class="services" id="services">
+    <div class="services-content">
+        <div class="section-header">
+            <h2>Everything Your Bike Needs, Under One Roof.</h2>
+            <p>From regular maintenance to specific mechanical problems, get the right service for your bike at MotoPrecision.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div>
+                    <div class="service-icon">🔍</div>
+                    <div class="service-name">General Bike Service</div>
+                    <div class="service-price">From $49</div>
+                    <div class="service-description">Comprehensive multi-point inspection, fluid checks, cable lubrication, and safety tightening.</div>
+                </div>
+                <a href="#enquiry" class="service-link" onclick="scrollToSection('enquiry')">Enquire Now →</a>
+            </div>
+            <div class="service-card">
+                <div>
+                    <div class="service-icon">⚙️</div>
+                    <div class="service-name">Engine Repair</div>
+                    <div class="service-price">Diagnostics + Quote</div>
+                    <div class="service-description">Valve adjustments, piston rebuilds, head gasket replacements, and compression tests.</div>
+                </div>
+                <a href="#enquiry" class="service-link" onclick="scrollToSection('enquiry')">Enquire Now →</a>
+            </div>
+            <div class="service-card">
+                <div>
+                    <div class="service-icon">🛢️</div>
+                    <div class="service-name">Engine Oil Change</div>
+                    <div class="service-price">From $29</div>
+                    <div class="service-description">Fully synthetic or semi-synthetic premium oil flush, OEM filter upgrade, and washer replacement.</div>
+                </div>
+                <a href="#enquiry" class="service-link" onclick="scrollToSection('enquiry')">Enquire Now →</a>
+            </div>
+            <div class="service-card">
+                <div>
+                    <div class="service-icon">🛑</div>
+                    <div class="service-name">Brake Repair</div>
+                    <div class="service-price">From $35</div>
+                    <div class="service-description">Brake pad replacement, caliper piston cleaning, hydraulic fluid bleeding, and rotor truing.</div>
+                </div>
+                <a href="#enquiry" class="service-link" onclick="scrollToSection('enquiry')">Enquire Now →</a>
+            </div>
+            <div class="service-card">
+                <div>
+                    <div class="service-icon">⛓️</div>
+                    <div class="service-name">Chain Care & Lube</div>
+                    <div class="service-price">From $19</div>
+                    <div class="service-description">High-pressure degreasing, ultrasonic link cleaning, laser slack tensioning, and high-temp wax lube.</div>
+                </div>
+                <a href="#enquiry" class="service-link" onclick="scrollToSection('enquiry')">Enquire Now →</a>
+            </div>
+            <div class="service-card">
+                <div>
+                    <div class="service-icon">🔋</div>
+                    <div class="service-name">Battery Check</div>
+                    <div class="service-price">Free Health Test</div>
+                    <div class="service-description">Cranking load tests, terminal corrosion deoxidation, stator charge audit, and AGM replacement.</div>
+                </div>
+                <a href="#enquiry" class="service-link" onclick="scrollToSection('enquiry')">Enquire Now →</a>
+            </div>
+            <div class="service-card">
+                <div>
+                    <div class="service-icon">⚡</div>
+                    <div class="service-name">Electrical Issues</div>
+                    <div class="service-price">Diagnostic Scan</div>
+                    <div class="service-description">Starter motor diagnosis, harness wire continuity checks, ECU error code resets, and sensor audits.</div>
+                </div>
+                <a href="#enquiry" class="service-link" onclick="scrollToSection('enquiry')">Enquire Now →</a>
+            </div>
+            <div class="service-card">
+                <div>
+                    <div class="service-icon">🔧</div>
+                    <div class="service-name">Custom Repairs</div>
+                    <div class="service-price">Custom Estimates</div>
+                    <div class="service-description">Fork seal replacements, cone bearing adjustment, custom exhausts, and accident repair assessments.</div>
+                </div>
+                <a href="#enquiry" class="service-link" onclick="scrollToSection('enquiry')">Enquire Now →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ENQUIRY FORM SECTION ===== -->
+<section class="enquiry" id="enquiry">
+    <div class="enquiry-content">
+        <div class="enquiry-left">
+            <span style="color: var(--primary); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px;">DIRECT WORKSHOP DESK</span>
+            <h2>Tell Us What's Wrong With Your Bike.</h2>
+            <p>Our mechanics review every submission directly. Describe your bike's symptoms, and we'll advise the clearest, most cost-effective path forward.</p>
+            
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">✓</div>
+                    <div>
+                        <div class="benefit-title">Tell us what your bike needs</div>
+                        <div class="benefit-description">Explain the noise, feel, or routine maintenance interval required.</div>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✓</div>
+                    <div>
+                        <div class="benefit-title">Discuss the repair before proceeding</div>
+                        <div class="benefit-description">Zero surprise bills. We inspect and quote upfront before any tool touches a bolt.</div>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✓</div>
+                    <div>
+                        <div class="benefit-title">Arrange a suitable service appointment</div>
+                        <div class="benefit-description">Select an arrival time that matches your schedule, with express slots available.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 24px; height: 224px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px;">
+                [Mechanic Working Image]
+            </div>
+        </div>
+
+        <form class="enquiry-form" id="enquiry-form" onsubmit="handleFormSubmit(event)">
+            <div id="form-message" class="form-message"></div>
+
+            <div class="form-group">
+                <div class="form-field">
+                    <label class="form-label">Full Name <span class="required">*</span></label>
+                    <input type="text" name="name" class="form-input" placeholder="John Doe" required>
+                </div>
+                <div class="form-field">
+                    <label class="form-label">Phone Number <span class="required">*</span></label>
+                    <input type="tel" name="phone" class="form-input" placeholder="+1 (555) 000-0000" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-field full">
+                    <label class="form-label">Email <span class="required">*</span></label>
+                    <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
+                </div>
+            </div>
+
+            <button type="submit" class="form-submit">Submit Service Enquiry</button>
+            <div class="form-disclaimer">Your details will be used solely to respond to your service enquiry. No spam, ever.</div>
+        </form>
+    </div>
+
+    <!-- ===== FREE AUDIT PAYMENT SECTION ===== -->
+    <div style="margin-top: 60px; padding: 40px; background: white; border-radius: 16px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <h3 style="font-size: 24px; color: var(--text-dark); margin-bottom: 12px; font-family: 'Manrope', sans-serif;">Get a Free Bike Service Audit for ₹1</h3>
+        <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 24px;">Our diagnostic team will inspect your bike and provide a detailed service report.</p>
+        <a href="https://payments.cashfree.com/forms/getaudit" target="_blank" class="btn btn-primary">Get Free Audit for ₹1</a>
+    </div>
+</section>
+
+<!-- ===== BOOKING SECTION ===== -->
+<section class="booking" id="booking">
+    <div class="booking-content">
+        <div class="booking-left">
+            <div class="booking-badge">RAPID INTAKE</div>
+            <h2>Booking Your Bike Service Is Easy.</h2>
+            <p>No complicated forms or unnecessary steps. Message us on WhatsApp, explain what your bike needs, and arrange a suitable time to visit.</p>
+            <div class="booking-buttons">
+                <button class="btn btn-secondary" onclick="window.open('https://wa.me/1234567890')">Book Through WhatsApp</button>
+                <button class="btn-light" onclick="window.open('tel:+1234567890')">Call +1 (555) 839-4420</button>
+            </div>
+        </div>
+
+        <div class="steps-timeline">
+            <div class="step step-1">
+                <div class="step-icon">📝</div>
+                <div>
+                    <div class="step-number">STEP 01</div>
+                    <div class="step-title">Tell Us About Your Bike</div>
+                    <div class="step-description">Share the make, engine displacement, mileage, and recent service records if relevant.</div>
+                </div>
+            </div>
+            <div class="step step-2">
+                <div class="step-icon">🔍</div>
+                <div>
+                    <div class="step-number">STEP 02</div>
+                    <div class="step-title">Explain the Problem</div>
+                    <div class="step-description">Describe whether it's an annual routine tune-up, an unexplained squeal, or a non-starting emergency.</div>
+                </div>
+            </div>
+            <div class="step step-3">
+                <div class="step-icon">✓</div>
+                <div>
+                    <div class="step-number">STEP 03</div>
+                    <div class="step-title">Confirm Your Appointment</div>
+                    <div class="step-description">We lock in your dedicated bay time. Drop your motorcycle off and receive live repair progress updates.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== REVIEWS SECTION ===== -->
+<section class="reviews" id="reviews">
+    <div class="reviews-content">
+        <div class="section-header">
+            <h2>What Our Customers Say</h2>
+            <p>Real feedback from riders who depend on our precision craftsmanship and honest estimates.</p>
+        </div>
+        
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div>
+                    <div class="stars">
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                    </div>
+                    <div class="review-text">"Brought my Street Triple in with an annoying electrical drain that another shop couldn't diagnose. MotoPrecision traced it down in 45 minutes and fixed the wiring cleanly. Completely transparent pricing!"</div>
+                </div>
+                <div class="review-author">Marcus Vance</div>
+                <div class="review-bike">Triumph Street Triple RS</div>
+                <div class="review-date">2 weeks ago</div>
+            </div>
+
+            <div class="review-card">
+                <div>
+                    <div class="stars">
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                    </div>
+                    <div class="review-text">"Superb chain service and brake bleed. The lever feel is night and day compared to before. Really appreciated the WhatsApp photo updates while my bike was on the hydraulic lift."</div>
+                </div>
+                <div class="review-author">Elena Rodriguez</div>
+                <div class="review-bike">Yamaha MT-09</div>
+                <div class="review-date">Last month</div>
+            </div>
+
+            <div class="review-card">
+                <div>
+                    <div class="stars">
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                    </div>
+                    <div class="review-text">"Booked a full 20,000km major service with valve clearance check. They explained everything beforehand, used OEM filters, and had it ready on time. Found my go-to mechanic."</div>
+                </div>
+                <div class="review-author">David K.</div>
+                <div class="review-bike">Honda CB650R</div>
+                <div class="review-date">3 weeks ago</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ SECTION ===== -->
+<section class="faq" id="faq">
+    <div class="faq-content">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Clear answers to common questions about workshop visits, costs, and bike turnaround.</p>
+        </div>
+
+        <div class="faq-items">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    What bike services do you offer?
+                    <span class="faq-toggle">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">We offer comprehensive services including general bike servicing, engine repairs, oil changes, brake repairs, chain maintenance, battery checks, electrical diagnostics, and custom repair solutions for all motorcycle brands.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How much does bike servicing cost?
+                    <span class="faq-toggle">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">Our pricing varies by service type. General servicing starts from $49, oil changes from $29, and brake repairs from $35. For custom repairs, we provide detailed quotes upfront before beginning any work, so there are no surprise costs.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Do I need to book an appointment?
+                    <span class="faq-toggle">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">Booking is highly recommended to ensure your bike gets a dedicated service bay and minimal wait time. You can book through our website form, WhatsApp, or by calling us directly. We also accommodate walk-ins when schedules allow.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How long will the repair take?
+                    <span class="faq-toggle">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">Service duration depends on the type of work. General servicing typically takes 1-2 hours, oil changes 30-45 minutes, and more complex repairs are quoted upfront with realistic timelines. We'll keep you updated throughout the process.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Do you provide spare parts?
+                    <span class="faq-toggle">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">Yes, we stock OEM and quality aftermarket parts for most popular motorcycle brands. If a specific part isn't in stock, we can source it quickly while maintaining fair pricing and warranty coverage.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Which bike brands do you service?
+                    <span class="faq-toggle">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">We service all major motorcycle brands including Triumph, Yamaha, Honda, Royal Enfield, KTM, BMW, Harley-Davidson, and more. Our technicians have multi-brand expertise and access to comprehensive service manuals.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    What payment methods do you accept?
+                    <span class="faq-toggle">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">We accept all major payment methods: cash, credit/debit cards, digital wallets, and bank transfers. Online payment options are available for upfront quotes and advance bookings.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Will I know the repair cost before work begins?
+                    <span class="faq-toggle">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">Absolutely. We provide detailed, written quotes for all work before beginning repairs. For routine services with fixed pricing, costs are transparent upfront. Any changes discovered during the inspection are discussed with you first.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Can I contact you through WhatsApp?
+                    <span class="faq-toggle">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">Yes! WhatsApp is our preferred contact method. You can send photos of your bike, describe issues, ask quick questions, and book appointments directly. We respond within a few hours during business hours.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Where is the workshop located?
+                    <span class="faq-toggle">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">We're located on a convenient highway ramp with easy access and ample parking. Our workshop features modern service bays, a customer lounge with live work updates, and a comfortable waiting area with refreshments.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-cta">
+            <div class="faq-cta-text">
+                <h3>Still Have Questions?</h3>
+                <p>Our team is happy to discuss symptoms or provide ballpark estimates.</p>
+            </div>
+            <div class="faq-cta-buttons">
+                <button class="btn btn-secondary" onclick="window.open('https://wa.me/1234567890')">WhatsApp Us</button>
+                <button class="btn" style="background: white; color: var(--text-dark); border: 1px solid #e0e0e0;" onclick="window.open('tel:+1234567890')">Call Us</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h4>MotoPrecision</h4>
+                <p>Trusted Bike Care. Reliable Repairs. Precision mechanical craftsmanship, modern diagnostics, and white-glove treatment for superbikes, sports tourers, and everyday performance commuters.</p>
+                <p style="font-size: 12px; color: #66ff8e; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px;">Certified Professional Workshop</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="#hero">Home</a>
+                    <a href="#services">Services & Tiers</a>
+                    <a href="#reviews">Customer Reviews</a>
+                    <a href="#faq">Frequently Asked Questions</a>
+                    <a href="#enquiry">Online Service Booking</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Workshop & Hours</h4>
+                <p><strong>📍 Highway Ramp Access</strong><br>Convenient location with ample parking and customer lounge</p>
+                <p><strong>🕐 Opening Hours</strong><br>Mon - Fri: 08:00 - 18:30<br>Saturday: 09:00 - 16:00<br>Sunday: Track Day / Closed</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Get In Touch</h4>
+                <p><strong>📞 Call Us</strong><br>+1 (555) 839-4420</p>
+                <p><strong>💬 WhatsApp</strong><br>Chat support available during business hours</p>
+                <p><strong>📧 Email</strong><br>service@motoprecision.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 MotoPrecision Motorcycle Workshop. All rights reserved.</p>
+            <div>
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== FLOATING WHATSAPP ===== -->
+<div class="whatsapp-float" onclick="window.open('https://wa.me/1234567890')">
+    💬 WhatsApp Support
+</div>
+
+<script>
+// Google Apps Script URL
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzvj8fKLXrsC6yxOYM8-aUStB4YmNPkRyNlCpg0hhbG-7PDeUdlWaRFzkhaW9LdAn2DHg/exec";
+
+/**
+ * Handle form submission
+ */
+function handleFormSubmit(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const phone = form.phone.value.trim();
+
+    const messageDiv = document.getElementById('form-message');
+    const submitButton = form.querySelector('.form-submit');
+
+    // Clear previous messages
+    messageDiv.textContent = '';
+    messageDiv.className = 'form-message';
+
+    // Validation
+    if (!name || !email || !phone) {
+        showFormMessage('Please fill in all fields', 'error');
+        return;
+    }
+
+    if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+        showFormMessage('Please enter a valid email address', 'error');
+        return;
+    }
+
+    // Disable submit button
+    submitButton.disabled = true;
+    submitButton.textContent = 'Submitting...';
+
+    // Build URL with query parameters
+    const url = SCRIPT_URL + "?" + new URLSearchParams({
+        name: name,
+        email: email,
+        phone: phone
+    });
+
+    // Send form data
+    fetch(url, {
+        method: "GET",
+        mode: "no-cors"
+    })
+    .then(() => {
+        showFormMessage('✓ Thank you! Your enquiry has been submitted. We\'ll contact you within 2 hours.', 'success');
+        form.reset();
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit Service Enquiry';
+    })
+    .catch(() => {
+        showFormMessage('✓ Your enquiry has been received. We\'ll be in touch soon.', 'success');
+        form.reset();
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit Service Enquiry';
+    });
+}
+
+/**
+ * Show form message
+ */
+function showFormMessage(message, type) {
+    const messageDiv = document.getElementById('form-message');
+    messageDiv.textContent = message;
+    messageDiv.className = 'form-message ' + type;
+    messageDiv.style.display = 'block';
+    
+    // Auto-hide success messages after 5 seconds
+    if (type === 'success') {
+        setTimeout(() => {
+            messageDiv.style.display = 'none';
+        }, 5000);
+    }
+}
+
+/**
+ * Toggle FAQ item
+ */
+function toggleFaq(button) {
+    const answer = button.nextElementSibling;
+    
+    // Close other FAQ items
+    document.querySelectorAll('.faq-question.active').forEach(item => {
+        if (item !== button) {
+            item.classList.remove('active');
+            item.nextElementSibling.classList.remove('open');
+        }
+    });
+
+    // Toggle current item
+    button.classList.toggle('active');
+    answer.classList.toggle('open');
+}
+
+/**
+ * Scroll to section
+ */
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+/**
+ * Toggle mobile menu
+ */
+function toggleMobileMenu() {
+    const nav = document.querySelector('nav');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    // Any initialization code here
+});
+</script>
+
+</body>
+</html>
